@@ -20,6 +20,11 @@ namespace Activity1part3.Controllers
         [HttpPost]
         public ActionResult Login(UserModel user) 
         {
+            //Validate the Form POST
+            if (!ModelState.IsValid)
+            {
+                return View("Login");
+            }
             SecurityService service = new SecurityService();
 
             bool check = service.Authenticate(user);
